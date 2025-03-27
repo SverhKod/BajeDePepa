@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Atrapa a Jhon</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Fuente de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        #jhon {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">🎮 Juegos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">🏠 Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">🎯 Atrapa a Jhon</a></li>
+                    <li class="nav-item"><a class="nav-link" href="juego_atrapa_pajita.html">🎯 Atrapa a Pajita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="convertidor_monedas.html">💰 Convertidor</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header class="bg-primary text-white py-3">
+        <h1 class="fw-bold">🎯 Atrapa a Jhon</h1>
+        <p class="lead">Haz clic en Jhon antes de que desaparezca.</p>
+    </header>
+
+    <!-- ZONA DEL JUEGO -->
+    <div class="container mt-5">
+        <h3 class="fw-bold">Puntos: <span id="puntos">0</span></h3>
+        <img src="../assets/Jhon.png" id="jhon" onclick="atrapar()" alt="Jhon">
+    </div>
+
+    <script>
+        let puntos = 0;
+
+        function moverJhon() {
+            let jhon = document.getElementById("jhon");
+            let x = Math.random() * (window.innerWidth - 120);
+            let y = Math.random() * (window.innerHeight - 120);
+            jhon.style.left = x + "px";
+            jhon.style.top = y + "px";
+        }
+
+        function atrapar() {
+            puntos++;
+            document.getElementById("puntos").innerText = puntos;
+            moverJhon();
+        }
+
+        setInterval(moverJhon, 1000);
+    </script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

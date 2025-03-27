@@ -4,39 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atrapa al Chato</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <h1>🎯 ¡Atrapa al Chato si puedes! 😆</h1>
     
-    <div id="nombre-container">
-        <label for="nombre">Ingresa tu nombre:</label>
-        <input type="text" id="nombre" placeholder="Tu nombre">
-        <button id="guardar-nombre">Jugar</button>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Fuente de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-white">
+
+    <!-- HEADER MODERNO -->
+    <header class="bg-gradient text-white text-center py-4">
+        <div class="container">
+            <h1 class="fw-bold"><span class="text-warning">🎮 Juegos</span> Divertidos</h1>
+            <p class="lead">¡Prueba nuestros juegos y diviértete atrapando al chato! 😆</p>
+        </div>
+    </header>
+
+    <!-- NAVBAR MEJORADO -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🎯 Juegos Online</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-semibold" href="index.html">🏠 Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-semibold" href="Public/JuegoAtrapaAJhon.html">🎯 Atrapa a Jhon</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-semibold" href="Public/juego_atrapa_pajita.html">🎯 Atrapa a Pajita</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-semibold" href="Public/convertidor_monedas.html">💰 Convertidor de Monedas</a></li>
+                    <li class="nav-item"><a class="nav-link text-uppercase fw-semibold" href="Public/tres_en_raya.html">❌⭕ 3 en Raya</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container text-center mt-4">
+        <h2 class="fw-bold">🎯 ¡Atrapa al Chato si puedes! 😆</h2>
+
+        <!-- Formulario para ingresar nombre -->
+        <div id="nombre-container" class="mt-4">
+            <label for="nombre" class="form-label">Ingresa tu nombre:</label>
+            <input type="text" id="nombre" class="form-control w-50 mx-auto text-center" placeholder="Tu nombre">
+            <button id="guardar-nombre" class="btn btn-success mt-2 fw-bold">Jugar</button>
+        </div>
+
+        <!-- Contador de tiempo -->
+        <p id="tiempo" class="mt-3 d-none">⏳ Tiempo: <span id="contador">30</span> segundos</p>
+
+        <!-- Zona de juego -->
+        <div id="juego" class="mt-4 d-none position-relative p-3 bg-light rounded shadow" style="width: 90%; height: 300px;">
+            <button id="boton-chato" class="btn btn-danger position-absolute">
+                <img src="assets/chato.png" alt="Atrápame" class="rounded-circle shadow-lg" width="80">
+            </button>
+        </div>
+
+        <!-- Puntaje -->
+        <p id="puntaje" class="mt-3 d-none">Puntaje: <span id="score">0</span></p>
+
+        <!-- Tabla de puntajes -->
+        <h2 class="mt-5">🏆 Tabla de Puntajes</h2>
+        <table class="table table-striped table-bordered bg-white text-dark w-50 mx-auto shadow">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Jugador</th>
+                    <th>Puntaje</th>
+                </tr>
+            </thead>
+            <tbody id="puntajes-body">
+                <!-- Aquí se llenarán los puntajes -->
+            </tbody>
+        </table>
     </div>
 
-    <p id="tiempo" style="display: none;">⏳ Tiempo: <span id="contador">30</span> segundos</p>
-    <div id="juego" style="display: none;">
-        <button id="boton-chato">
-            <img src="assets/chato.png" alt="Atrápame">
-        </button>
-    </div>
-    <p id="puntaje" style="display: none;">Puntaje: <span id="score">0</span></p>
-
-    <h2>🏆 Tabla de Puntajes</h2>
-    <table id="tabla-puntajes">
-        <thead>
-            <tr>
-                <th>Jugador</th>
-                <th>Puntaje</th>
-            </tr>
-        </thead>
-        <tbody id="puntajes-body">
-            <!-- Aquí se llenarán los puntajes -->
-        </tbody>
-    </table>
-
+    <!-- Bootstrap y Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
 </body>
