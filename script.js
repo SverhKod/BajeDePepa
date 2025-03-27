@@ -69,7 +69,7 @@ function iniciarJuego() {
         } else {
             clearInterval(intervaloTiempo);
             botonChato.disabled = true;
-            botonChato.innerHTML = "<img src='perdiste.png' alt='😵 Fin del juego'>";
+            botonChato.innerHTML = "<img src='./assets/image.png' alt='😵 Fin del juego'>";
             
             // Guardar puntaje del jugador
             puntajes.push({ nombre: nombreJugador, puntaje: puntaje });
