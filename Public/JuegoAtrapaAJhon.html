@@ -16,13 +16,33 @@
         body {
             background-color: #f8f9fa;
             text-align: center;
+            font-family: 'Poppins', sans-serif;
         }
+
+        /* Zona de juego */
+        #zona-juego {
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            position: relative;
+            border: 2px solid black;
+            background-color: #ddd;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
         #jhon {
             width: 120px;
             height: 120px;
             position: absolute;
             cursor: pointer;
             transition: 0.2s;
+        }
+
+        /* Tabla de puntajes */
+        table {
+            width: 50%;
+            margin: 20px auto;
         }
     </style>
 </head>
@@ -55,25 +75,84 @@
 
     <!-- ZONA DEL JUEGO -->
     <div class="container mt-5">
+        <h3 class="fw-bold">Jugador: <span id="jugador"></span></h3>
         <h3 class="fw-bold">Puntos: <span id="puntos">0</span></h3>
-        <img src="../assets/Jhon.png" id="jhon" onclick="atrapar()" alt="Jhon">
+
+        <div id="zona-juego">
+            <img src="../assets/Jhon.png" id="jhon" onclick="atrapar()" alt="Jhon">
+        </div>
+
+        <button class="btn btn-danger mt-3" onclick="reiniciarPuntaje()">🔄 Reiniciar Puntaje</button>
+
+        <h3 class="fw-bold mt-4">📜 Tabla de Puntajes</h3>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Puntaje</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-puntajes">
+            </tbody>
+        </table>
     </div>
 
     <script>
         let puntos = 0;
 
+        // Definir jugador
+        document.addEventListener("DOMContentLoaded", function() {
+            let nombre = localStorage.getItem("jugador");
+
+            if (!nombre) {
+                nombre = prompt("Ingresa tu nombre:");
+                if (!nombre) nombre = "Jugador Anónimo"; // Si el usuario deja vacío
+                localStorage.setItem("jugador", nombre);
+            }
+
+            document.getElementById("jugador").innerText = nombre;
+            actualizarTabla();
+        });
+
         function moverJhon() {
             let jhon = document.getElementById("jhon");
-            let x = Math.random() * (window.innerWidth - 120);
-            let y = Math.random() * (window.innerHeight - 120);
+            let contenedor = document.getElementById("zona-juego");
+
+            let maxX = contenedor.clientWidth - jhon.clientWidth;
+            let maxY = contenedor.clientHeight - jhon.clientHeight;
+
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+
             jhon.style.left = x + "px";
             jhon.style.top = y + "px";
         }
 
         function atrapar() {
+            puntos = parseInt(localStorage.getItem("puntos")) || 0;
             puntos++;
+            localStorage.setItem("puntos", puntos);
             document.getElementById("puntos").innerText = puntos;
+            
+            actualizarTabla();
             moverJhon();
+        }
+
+        function actualizarTabla() {
+            let tabla = document.getElementById("tabla-puntajes");
+            tabla.innerHTML = ""; // Limpiar tabla
+
+            let jugador = localStorage.getItem("jugador") || "Jugador Anónimo";
+            let puntos = localStorage.getItem("puntos") || 0;
+
+            let fila = `<tr><td>${jugador}</td><td>${puntos}</td></tr>`;
+            tabla.innerHTML = fila;
+        }
+
+        function reiniciarPuntaje() {
+            localStorage.setItem("puntos", 0);
+            document.getElementById("puntos").innerText = "0";
+            actualizarTabla();
         }
 
         setInterval(moverJhon, 1000);
