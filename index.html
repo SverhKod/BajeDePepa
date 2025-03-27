@@ -9,14 +9,33 @@
 <body>
 
     <h1>🎯 ¡Atrapa al Chato si puedes! 😆</h1>
-    <p id="tiempo">⏳ Tiempo: <span id="contador">30</span> segundos</p>
-
-    <div id="juego">
-        <button id="boton-chato">Atrápame</button>
+    
+    <div id="nombre-container">
+        <label for="nombre">Ingresa tu nombre:</label>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+        <button id="guardar-nombre">Jugar</button>
     </div>
 
-    <p id="puntaje">Puntaje: <span id="score">0</span></p>
-    <p id="max-puntaje">🏆 Récord: <span id="highscore">0</span></p>
+    <p id="tiempo" style="display: none;">⏳ Tiempo: <span id="contador">30</span> segundos</p>
+    <div id="juego" style="display: none;">
+        <button id="boton-chato">
+            <img src="assets/chato.png" alt="Atrápame">
+        </button>
+    </div>
+    <p id="puntaje" style="display: none;">Puntaje: <span id="score">0</span></p>
+
+    <h2>🏆 Tabla de Puntajes</h2>
+    <table id="tabla-puntajes">
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntaje</th>
+            </tr>
+        </thead>
+        <tbody id="puntajes-body">
+            <!-- Aquí se llenarán los puntajes -->
+        </tbody>
+    </table>
 
     <script src="script.js"></script>
 
