@@ -5,12 +5,13 @@ const highScoreTexto = document.getElementById("highscore");
 const contadorTexto = document.getElementById("contador");
 
 let puntaje = 0;
-let tiempo = 30; // Tiempo del juego en segundos
+let tiempo = 30;
 
 // Cargar el récord guardado en el navegador
 let highScore = localStorage.getItem("highScore") || 0;
 highScoreTexto.innerText = highScore;
 
+// Mover el botón a una posición aleatoria
 function moverBoton() {
     let maxX = juego.clientWidth - botonChato.clientWidth;
     let maxY = juego.clientHeight - botonChato.clientHeight;
@@ -22,6 +23,7 @@ function moverBoton() {
     botonChato.style.top = `${randomY}px`;
 }
 
+// Sumar puntaje cuando el jugador atrapa el botón
 botonChato.addEventListener("click", () => {
     if (tiempo > 0) {
         puntaje++;
@@ -39,6 +41,7 @@ let intervaloTiempo = setInterval(() => {
         clearInterval(intervaloTiempo);
         botonChato.disabled = true;
         botonChato.innerText = "😵 Fin del juego";
+
         // Guardar récord si es mayor al anterior
         if (puntaje > highScore) {
             localStorage.setItem("highScore", puntaje);

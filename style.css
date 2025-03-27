@@ -3,10 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(to right, #2c3e50, #3498db);
+    background: url('./assets/image.png') no-repeat center center fixed;
+    background-size: cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,35 +16,47 @@ body {
     align-items: center;
     color: white;
 }
+
 h1 {
     margin-bottom: 10px;
+    text-shadow: 2px 2px 5px black;
 }
-#tiempo, #puntaje, #max-puntaje {
-    font-size: 18px;
-    margin: 5px 0;
+
+#tiempo,
+#puntaje,
+#max-puntaje {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px black;
 }
+
 #juego {
     position: relative;
     width: 90vw;
     height: 70vh;
-    background: white;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    margin: 10px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    backdrop-filter: blur(5px);
 }
+
 #boton-chato {
     position: absolute;
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
     background: #e74c3c;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 14px;
-    transition: transform 0.2s;
+    font-size: 16px;
+    transition: transform 0.2s, background 0.3s;
 }
+
 #boton-chato:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    background: #c0392b;
 }
